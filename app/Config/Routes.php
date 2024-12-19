@@ -1,0 +1,12 @@
+<?php
+
+use CodeIgniter\Router\RouteCollection;
+
+/**
+ * @var RouteCollection $routes
+ */
+$routes->get('/', 'Home::index');
+$routes->get('cau', 'Main::index');
+$routes->get('bundesland', 'Pocasi::bundesland');
+$routes->get('station/(:num)', 'Pocasi::stations/$1');
+$routes->get('station/details/(:num)', 'Pocasi::stationDetails/$1');
