@@ -9,6 +9,7 @@ use App\Models\Station;
 
 class Pocasi extends BaseController
 {
+
     public function stations($idStations)
     {
         $station = new Station();
@@ -33,7 +34,6 @@ class Pocasi extends BaseController
         $data['measurements'] = $dataModel->where('Stations_ID', $idStation)->orderBy('date', 'asc')->findAll();
 
         return view('station_details', $data);
-    }
-    
+    }  
 
 }
