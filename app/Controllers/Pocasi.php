@@ -49,17 +49,13 @@ class Pocasi extends BaseController
         return view('bundesland_details', $data);
     }
 
-    public function stationsOverview()
-    {
+
+    public function stationsList(){
         $stations = $this->stationModel->findAll();
-        $data['stations'] = [];
-
-        foreach ($stations as $station) {
+        foreach ($stations as &$station) {
             $bundesland = $this->bundeslandModel->find($station->bundesland);
-            $station->flag = $bundesland ? $bundesland->vlajky : null;
-            $data['stations'][] = $station;
+            $station->bundesland_name = $bundesland->name;
         }
-
-        return view('stations_overview', $data);
+        return view('stations_list', ['stations' => $stations]);
     }
 }

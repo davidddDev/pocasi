@@ -15,7 +15,5 @@
     <div class="container mt-3">
         <?= $this->renderSection('content') ?>
     </div>
-
-    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
 </html>
