@@ -1,6 +1,7 @@
 <?= $this->extend('layouts/main') ?>
 
 <?= $this->section('content') ?>
+<?= $this->include('layouts/navbar') ?>
 
 <!DOCTYPE html>
 <html lang="en">

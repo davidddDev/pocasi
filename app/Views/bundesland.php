@@ -1,6 +1,7 @@
 <?= $this->extend('layouts/main') ?>
 
 <?= $this->section('content') ?>
+<?= $this->include('layouts/navbar') ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -28,6 +29,23 @@
         .no-underline a:hover {
             text-decoration: underline;
         }
+
+        .btn-fialove {
+            background-color: #6f42c1;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 0.875rem;
+        }
+
+        .btn-fialove:hover {
+            background-color: #5a379c;
+            color: white;
+        }
     </style>
 </head>
 
@@ -40,13 +58,19 @@
                 <div class="table-responsive">
                     <?php
                         $table = new \CodeIgniter\View\Table();
-                        $table->setHeading('ID', 'Name');
-
+                        $table->setHeading('ID', 'Name', 'Vlajka/Mapa');
+                    
                         foreach ($bundesland as $row) {
-                            $link = anchor("station/{$row->id}", esc($row->name), ['class' => 'text-light']);
-                            $table->addRow("<span class='custom-id'>" . esc($row->id) . "</span>", "<span class='no-underline'>{$link}</span>");
+                            $linkName = anchor("station/{$row->id}", esc($row->name), ['class' => 'text-light']);
+                            $detailsTlacitko = anchor("bundesland/details/{$row->id}", 'Obrázky', ['class' => 'btn btn-fialove btn-sm']);
+                    
+                            $table->addRow(
+                                "<span class='custom-id'>" . esc($row->id) . "</span>",
+                                "<span class='no-underline'>{$linkName}</span>",
+                                $detailsTlacitko
+                            );
                         }
-
+                    
                         $template = [
                             'table_open' => '<table class="table table-striped table-dark table-bordered table-hover table-purple">',
                             'thead_open' => '<thead>',
@@ -63,7 +87,7 @@
                             'cell_end' => '</td>',
                             'table_close' => '</table>'
                         ];
-
+                    
                         $table->setTemplate($template);
                         echo $table->generate();
                     ?>

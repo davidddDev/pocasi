@@ -12,7 +12,7 @@ class Bundesland extends Model
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [];
+    protected $allowedFields    = ['name', 'vlajky', 'mapy'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;

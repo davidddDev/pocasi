@@ -1,6 +1,7 @@
 <?= $this->extend('layouts/main') ?>
 
 <?= $this->section('content') ?>
+<?= $this->include('layouts/navbar') ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,9 +19,9 @@
 
         <div class="card bg-secondary mb-4">
             <div class="card-body">
-                <p class="text-white"><strong>Latitude:</strong> <?= esc($station->geo_latitude) ?></p>
-                <p class="text-white"><strong>Longitude:</strong> <?= esc($station->geo_longtitude) ?></p>
-                <p class="text-white"><strong>Výška:</strong> <?= esc($station->height) ?> m</p>
+                <p style="color: white;"><strong>Latitude:</strong> <?= esc($station->geo_latitude) ?></p>
+                <p style="color: white;"><strong>Longitude:</strong> <?= esc($station->geo_longtitude) ?></p>
+                <p style="color: white;"><strong>Výška:</strong> <?= esc($station->height) ?> m</p>
             </div>
         </div>
 
