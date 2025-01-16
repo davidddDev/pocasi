@@ -8,7 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dark Mode</title>
+    <title>Stanice</title>
 </head>
 <body class="bg-dark text-light">
     <div class="container py-4">

@@ -14,7 +14,7 @@
     <style>
 
         .mapa_kontejnerik img, .vlajka_kontejnerik img {
-            max-width: 80%;
+            max-width: 100%;
             max-height: 300px;
             display: block;
             margin: 0 auto;
@@ -37,7 +37,7 @@
             <div class="col-md-6 mapa_kontejnerik">
                 <div>
                     <h3 class="text-center">Mapa</h3>
-                    <img src="<?= base_url('obrazky/mapy/' . esc($bundesland->mapy)) ?>" alt="Mapka <?= esc($bundesland->name) ?>">
+                    <img src="<?= base_url('obrazky/mapy/' . esc($bundesland->mapy)) ?>" alt="Mapa <?= esc($bundesland->name) ?>">
                 </div>
             </div>
 
