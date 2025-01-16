@@ -34,19 +34,22 @@
                         <th>Datum</th>
                         <th>Minimální teplota (2m)</th>
                         <th>Maximální teplota (2m)</th>
+                        <th>Vlhkost</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($measurements as $measurement): ?>
+                    <?php foreach ($measurements as $measurement):?>
                         <tr>
                             <td class="fw-bold text-center"><?= esc($measurement['id']) ?></td>
                             <td class="text-center"><?= esc(date('d-m-Y', strtotime($measurement['date']))) ?></td>
                             <td class="text-center"><?= esc($measurement['min_2m']) ?> °C</td>
                             <td class="text-center"><?= esc($measurement['max_2m']) ?> °C</td>
+                            <td class="text-center"><?= esc($measurement['humidity']) ?> %</td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
             </table>
+            <?php echo $pager->links(); ?>
         </div>
     </div>
 </body>

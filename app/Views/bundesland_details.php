@@ -47,7 +47,7 @@
                     <img src="<?= base_url('obrazky/vlajky/' . esc($bundesland->vlajky)) ?>" alt="Vlajka <?= esc($bundesland->name) ?>">
                 </div>
             </div>
-        </div>;
+        </div>
     </div>
 </body>
 

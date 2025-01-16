@@ -3,7 +3,6 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\Bundesland;
 use App\Models\Station;
 use App\Models\Data;
@@ -38,7 +37,9 @@ class Pocasi extends BaseController
     public function stationDetails($idStation)
     {
         $data['station'] = $this->stationModel->find($idStation);
-        $data['measurements'] = $this->dataModel->where('Stations_ID', $idStation)->orderBy('date', 'asc')->findAll();
+        $data['measurements'] = $this->dataModel->where('Stations_ID', $idStation)->orderBy('date', 'asc')->paginate(25);
+        $pager = $this->dataModel->pager;
+        $data['pager'] = $pager;
 
         return view('station_details', $data);
     }
@@ -51,7 +52,9 @@ class Pocasi extends BaseController
 
 
     public function stationsList(){
-        $stations = $this->stationModel->findAll();
+        $stations = $this->stationModel->join('pocasi_bundesland', 'station.bundesland = pocasi_bundesland.id', 'inner')
+            ->select('station.*, pocasi_bundesland.vlajky AS vlajky')
+            ->findAll();
         foreach ($stations as &$station) {
             $bundesland = $this->bundeslandModel->find($station->bundesland);
             $station->bundesland_name = $bundesland->name;
