@@ -58,14 +58,13 @@
                 <div class="table-responsive">
                     <?php
                         $table = new \CodeIgniter\View\Table();
-                        $table->setHeading('ID', 'Name', 'Vlajka/Mapa');
+                        $table->setHeading('Name', 'Vlajka/Mapa');
                     
                         foreach ($bundesland as $row) {
-                            $linkName = anchor("station/{$row->id}", esc($row->name), ['class' => 'text-light']);
-                            $detailsTlacitko = anchor("bundesland/details/{$row->id}", 'Obrázky', ['class' => 'btn btn-fialove btn-sm']);
+                            $linkName = anchor("station/}", esc($row->name), ['class' => 'text-light']);
+                            $detailsTlacitko = anchor("bundesland/details/", 'Obrázky', ['class' => 'btn btn-fialove btn-sm']);
                     
                             $table->addRow(
-                                "<span class='custom-id'>" . esc($row->id) . "</span>",
                                 "<span class='no-underline'>{$linkName}</span>",
                                 $detailsTlacitko
                             );
