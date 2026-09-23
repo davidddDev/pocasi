@@ -84,14 +84,14 @@ phpunit
 #-------------------------
 # Composer
 #-------------------------
-vendor/
+
 
 #-------------------------
 # IDE / Development Files
 #-------------------------
 
 # Modules Testing
-_modules/*
+
 
 # phpenv local config
 .php-version
