@@ -29,19 +29,32 @@
         <div class="row">
             <?php foreach ($stations as $station): ?>
                 <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title"><?= esc($station->place) ?></h5>
-                            <p>
-                                <strong>Latitude:</strong> <?= esc($station->geo_latitude) ?><br>
-                                <strong>Longitude:</strong> <?= esc($station->geo_longtitude) ?><br>
-                                <strong>Height:</strong> <?= esc($station->height) ?> m<br>
-                                <strong>Bundesland:</strong> <?= esc($station->bundesland_name) ?><br>
-                                <strong>Vlajka:</strong> <img src="<?= base_url('obrazky/vlajky/' . $station->vlajky) ?>" alt="<?= esc($station->bundesland_name) ?>" style="width: 20px; height: 20px;">
+<div class="card">
+    <div class="card-body">
 
-                            </p>
-                        </div>
-                    </div>
+        <h5 class="card-title">
+            <?= esc($station->place) ?>
+        </h5>
+
+        <p>
+            <strong>Latitude:</strong> <?= esc($station->geo_latitude) ?><br>
+            <strong>Longitude:</strong> <?= esc($station->geo_longtitude) ?><br>
+            <strong>Height:</strong> <?= esc($station->height) ?> m<br>
+            <strong>Bundesland:</strong> <?= esc($station->bundesland_name) ?><br>
+
+            <strong>Vlajka:</strong>
+            <img src="<?= base_url('obrazky/vlajky/' . $station->vlajky) ?>"
+                 alt="<?= esc($station->bundesland_name) ?>"
+                 style="width: 20px; height: 20px;">
+        </p>
+
+        <a href="<?= site_url('station/details/' . $station->S_ID) ?>"
+           class="btn btn-primary">
+            Zobrazit detaily
+        </a>
+
+    </div>
+</div>
                 </div>
             <?php endforeach; ?>
         </div>

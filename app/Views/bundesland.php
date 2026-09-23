@@ -62,8 +62,11 @@
                     
                         foreach ($bundesland as $row) {
                             $linkName = anchor("station/}", esc($row->name), ['class' => 'text-light']);
-                            $detailsTlacitko = anchor("bundesland/details/", 'Obrázky', ['class' => 'btn btn-fialove btn-sm']);
-                    
+                            $detailsTlacitko = anchor(
+                            "bundesland/details/" . $row->id,
+                            'Obrázky',
+                            ['class' => 'btn btn-fialove btn-sm'] );
+
                             $table->addRow(
                                 "<span class='no-underline'>{$linkName}</span>",
                                 $detailsTlacitko

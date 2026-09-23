@@ -61,4 +61,22 @@ class Pocasi extends BaseController
         }
         return view('stations_list', ['stations' => $stations]);
     }
+
+public function deleteMonthData()
+{
+    $stationId = $this->request->getPost('station_id');
+    $year = $this->request->getPost('year');
+    $month = $this->request->getPost('month');
+
+    $from = $year . '-' . str_pad($month, 2, '0', STR_PAD_LEFT) . '-01';
+    $to = date('Y-m-d', strtotime($from . ' +1 month'));
+
+    $this->dataModel
+        ->where('Stations_ID', $stationId)
+        ->where('date >=', $from)
+        ->where('date <', $to)
+        ->delete();
+
+    return redirect()->to('station/details/' . $stationId);
+}
 }

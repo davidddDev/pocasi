@@ -4,7 +4,7 @@
 <?= $this->include('layouts/navbar') ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cs">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,6 +25,35 @@
             </div>
         </div>
 
+        <!-- FORMULÁŘ PRO SOFT DELETE -->
+        <div class="card bg-secondary mb-4">
+            <div class="card-body">
+                <h4 class="card-title text-light mb-3">Smazat data za daný měsíc (Soft Delete)</h4>
+                <form action="<?= site_url('station/delete-month') ?>" method="post" class="row g-3" onsubmit="return confirm('Opravdu chcete smazat měřená data pro vybraný měsíc?');">
+                    <?= csrf_field() ?>
+                    <input type="hidden" name="station_id" value="<?= esc($station->S_ID) ?>">
+                    
+                    <div class="col-md-4">
+                        <label for="year" class="form-label text-light">Rok</label>
+                        <input type="number" name="year" id="year" class="form-control" placeholder="např. 2023" required>
+                    </div>
+                    
+                    <div class="col-md-4">
+                        <label for="month" class="form-label text-light">Měsíc</label>
+                        <select name="month" id="month" class="form-select" required>
+                            <?php for ($m = 1; $m <= 12; $m++): ?>
+                                <option value="<?= $m ?>">Měsíc <?= $m ?></option>
+                            <?php endfor; ?>
+                        </select>
+                    </div>
+                    
+                    <div class="col-md-4 d-flex align-items-end">
+                        <button type="submit" class="btn btn-danger w-100">Smazat měsíc</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
         <h2 class="text-center mb-3">Naměřené údaje</h2>
         <div class="table-responsive">
             <table class="table table-dark table-bordered table-striped">
@@ -38,7 +67,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($measurements as $measurement):?>
+                    <?php foreach ($measurements as$measurement):?>
                         <tr>
                             <td class="fw-bold text-center"><?= esc($measurement['id']) ?></td>
                             <td class="text-center"><?= esc(date('d-m-Y', strtotime($measurement['date']))) ?></td>
